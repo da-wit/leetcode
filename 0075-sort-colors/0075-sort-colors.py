@@ -1,52 +1,27 @@
 class Solution:
     def sortColors(self, nums: List[int]) -> None:
-        max_val = max(nums)
-        print()
-        count = [0] *(max_val +1)
-        result = [0] * len(nums)
-        for i in nums:
-            count[i]+=1
-        for i in range(1,len(count)):
-            count[i] = count[i] + count[i-1]
-
-        i = len(nums)-1
-        while i >=0:
-            result[count[nums[i]] -1] = nums[i]
-            count[nums[i]] -=1
-            i -=1
-        for i in range(len(nums)):
-            nums[i] = result[i]
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        fixed =[0,1,2]
+        left = 0
+        for i in fixed:
+            right = left +1
+            while right < len(nums) and left < len(nums)-1:
+                if(i != nums[left] and i == nums[right]):
+                    nums[left],nums[right]=nums[right],nums[left]
+                    left +=1
+                    right +=1
+                elif (i != nums[left] and i != nums[right]):
+                    right +=1
+                elif (i == nums[left]):
+                    left +=1
+                    right = left +1
+                else:
+                    right +=1
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        # x = [0,1,2]
-        # y ={}
-        # z= []
-        # for i in range(len(x)):
-        #     y[x[i]]= nums.count(x[i])
-        # nums.clear()
-        # for key,val in y.items():
-            
-        #     nums.extend([key]*val)
-        # return nums
         
 
+        
 
-    
-
-     
-
-
-
-                
         
