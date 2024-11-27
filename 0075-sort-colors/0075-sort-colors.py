@@ -3,22 +3,12 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        fixed =[0,1,2]
-        left = 0
-        for i in fixed:
-            right = left +1
-            while right < len(nums) and left < len(nums)-1:
-                if(i != nums[left] and i == nums[right]):
-                    nums[left],nums[right]=nums[right],nums[left]
-                    left +=1
-                    right +=1
-                elif (i != nums[left] and i != nums[right]):
-                    right +=1
-                elif (i == nums[left]):
-                    left +=1
-                    right = left +1
-                else:
-                    right +=1
+        count =[0,0,0]
+        for i in nums:
+            count[i]+=1
+        nums[:count[0]] = [0] * count[0]
+        nums[count[0]:(count[1]+count[0])] = [1] * count[1]
+        nums[count[1]+count[0]:] =[2] * count[2]
         
         
 
