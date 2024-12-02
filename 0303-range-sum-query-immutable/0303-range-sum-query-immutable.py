@@ -1,20 +1,15 @@
 class NumArray:
 
     def __init__(self, nums: List[int]):
-        self.prefix = []
         self.nums = nums
-        for i in range(len(self.nums)):
-            if i == 0 :
-                self.prefix.append(self.nums[i])
-            else:
-                self.prefix.append(self.nums[i] + self.prefix[-1])
-        self.prefix.insert(0,0)
+        self.pre =[0]* (len(self.nums)+1)
         
-
+        for i in range(1,len(self.nums)+1):
+            self.pre[i]=self.pre[i-1]+nums[i-1]
     def sumRange(self, left: int, right: int) -> int:
-       
+        return self.pre[right+1] - self.pre[left]
         
-        return self.prefix[right+1] - self.prefix[left]
+        
         
 
 
