@@ -2,14 +2,24 @@ class Solution:
     def timeRequiredToBuy(self, tickets: List[int], k: int) -> int:
         
         time = 0
-        # while tickets[k] > 0:
-        while tickets[k] > 0:
-            for i in range(len(tickets)):
-                if tickets[i] > 0:
-                    tickets[i] -=1
-                    time +=1
-                if tickets[k] == 0:
+        q= deque()
+        for i in tickets:
+            q.append(i)
+        while True:
+            time+=1
+            q[0]-=1
+            if q[0]>0:
+                x=q.popleft()
+                q.append(x)
+                
+            elif q[0]==0:
+                if 0 ==k:
                     break
+                q.popleft()
+            k-=1
+            if k <0:
+                k=len(q)-1
+            
         return time
         
         
@@ -44,5 +54,6 @@ class Solution:
         
         
         
+                
             
         
