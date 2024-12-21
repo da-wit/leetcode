@@ -1,18 +1,20 @@
 class Solution:
     def relativeSortArray(self, arr1: List[int], arr2: List[int]) -> List[int]:
-        new = []
-        arr1.sort()
-        for i in range(len(arr2)):
-            right = 0
-            while right < len(arr1):
-                if arr1[right] == arr2[i]:
-                    new.append(arr1[right])
-                    right +=1
-                else:
-                    right +=1
-        for i in arr1:
-            if i not in arr2:
-                new.append(i)
-
-        return new
         
+        
+        count =[0]*(max(arr1)+1)
+        res =[]
+        last =[]
+        for i in arr1:
+            if i in arr2:
+                count[i]+=1
+            else:
+                last.append(i)
+        for i in arr2:
+            res.extend([i]*count[i])
+        res.extend(sorted(last))
+        return res
+        
+        
+
+
