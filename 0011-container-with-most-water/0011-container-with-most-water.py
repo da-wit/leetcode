@@ -1,24 +1,19 @@
-class Solution:
-    def maxArea(self, height: List[int]) -> int:
-        
-        left = 0
-        right = len(height) -1
-        m = 0
-        while left < right:
-            
-            # x = min(height[left],height[right])
-            if height[left] < height[right]:
-                x = height[left]
-                m = max(m,x* (right -left))
-                left +=1
-            else:
-                x = height[right]
-                m = max(m, x *(right -left))
-                right -=1
-            
-        return m
+import array
+new_array=array.array('i',[1,8,6,2,5,4,8,3,7])
+max = 0
+for z in range(len(new_array)-1):
+    x= z
+    hight = new_array[x]
+    if (new_array[z + 1] - new_array[z]) > 0:
+        y= (new_array[z + 1] - new_array[z]) * hight
+        if max < y:
+            max=y
+    else:
+        y= (new_array[z ] - new_array[z + 1]) * hight
+        if max < y:
+            max=y
+print(max)
+
+
 
         
-
-
-        return m
