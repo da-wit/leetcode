@@ -1,21 +1,39 @@
 class Solution:
     def dividePlayers(self, skill: List[int]) -> int:
-        count = [0]*(max(skill) +  1)
-        for i in skill:
-            count[i]+=1
-        sorted_val=[]
-        for i in range(len(count)):
-            sorted_val.extend([i]*count[i])
-        l =0
-        r =len(sorted_val)-1
-        sums =0
-        curr = sorted_val[l] + sorted_val[r]
-        while l < r:
-            if curr != sorted_val[l] + sorted_val[r]:
-                return -1
-            sums+= sorted_val[l] *sorted_val[r]
-            
-            l+=1
-            r-=1
-        return  sums
+        skill.sort()
+        left = 0
+        right = len(skill)-1
+        x = 0
+        while left < len(skill) and  right < len(skill):
+            print(skill)
+            print(left,right)
+            print (x)
+            # for i in range(int(len(skill)/2)):
+            x += skill[left] + skill[right]
+            left +=1 
+            right -=1           
+        if x%len(skill)/2  == 0:
+            left = 0
+            right = len(skill)-1
+            y = 0
+            for i in range(int(len(skill)/2)):
+                y += skill[left] * skill[right]
+                print(y)
+                left  +=1
+                right -=1
+            return y
+        else:
+            return -1
+        
 
+            
+            
+
+            
+            
+
+
+
+
+            
+        
